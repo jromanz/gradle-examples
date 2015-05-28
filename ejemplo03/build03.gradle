@@ -1,0 +1,27 @@
+task compilar {
+	doLast{
+		println "Compilando el proyecto..."
+	}
+}
+task distribuir {
+	onlyIf{
+		compilar.didWork	//comprueba si cualquier task ha sido ejecutado
+	}				
+
+	doLast{
+		println "Distribuyendo el proyecto..."
+	}
+}
+task deployar{
+	onlyIf{
+		new File("configuration.xml").exists()
+	}
+	doLast{
+		System.out.println("Deployando el proyecto...");
+	}
+}
+
+// ejecución condicional
+// con comando 1ro:	gradle -b build03.gradle -q distribuir
+// con comando 2do:	gradle -b build03.gradle -q compilar distribuir
+// si existe archivo xml se ejecuta tarea: gradle -b build03.gradle -q deployar

@@ -1,0 +1,24 @@
+apply plugin: "java"
+apply plugin: "application"		//moldeando nuestra app
+mainClassName = "HolaMundo"		//variable para correr app
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = 1.0
+
+jar {
+	manifest {
+		attributes "Main-Class": "HolaMundo", "flag":"false"
+	}
+}
+
+//Comentar apply plugin: "application" y ejecutar estos comandos:
+//ejecutar con: gradle -b build01.gradle tasks
+//ejecutar con: gradle -b build01.gradle -q build (compila class y empaqueta en jar)
+//		Java:	java -cp build/classes/main HolaMundo
+//		Jar:	java -jar build/libs/ejemplo02-1.0.jar
+
+
+
+//Usando apply plugin: "application" ya no es necesario correr demasiados comandos
+//Usar solo este comando:	gradle -b build01.gradle -q run

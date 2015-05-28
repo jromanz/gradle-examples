@@ -1,0 +1,20 @@
+/*
+	build04.gradle para el tutorial de gradle
+*/
+task a << {
+	System.out.println("Ejecutando tarea A...");
+}
+
+task b << {
+	System.out.println("Ejecutando tarea B...");
+}
+
+task c << {
+	System.out.println("Ejecutando tarea C...");
+}
+b.finalizedBy a
+c.finalizedBy b
+
+//	Despues de ejecutar una tarea pueda ejecutar otra
+//	comando: gradle -b build04.gradle -q c
+

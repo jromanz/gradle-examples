@@ -1,0 +1,15 @@
+
+task crearDist << {
+	new File("dist").mkdirs()
+}
+
+task copiar (type: Copy, dependsOn: crearDist) {
+	from "tools"
+	from "settings.xml"
+	into "dist/tools"
+	include "*.txt"
+	exclude "*.bat"
+}
+
+// Tareas base: tipo copy
+// comando: gradle -b build01.gradle -q copiar

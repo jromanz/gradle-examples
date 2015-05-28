@@ -1,0 +1,34 @@
+task holaMundo {
+
+	println "Configurando holaMundo"
+
+	doLast{
+		println "blah blah blah"
+	}
+}
+
+holaMundo.doFirst {
+	println "Llamando a doFirst"
+}
+
+task holaMundoAgain(dependsOn: "holaMundo"){
+	doFirst{
+		println "Llamando a holaMundoAgain.doFirst"
+	}
+	doLast{
+		println "Llamando a holaMundoAgain.doLast"
+	}
+}
+
+task M {
+	println "M"
+}
+task N {
+	println "N"
+}
+
+M.mustRunAfter "N"
+
+//Ejecutar comando: gradle -b build02.gradle -q holaMundo
+//Ejecutar comando: gradle -b build02.gradle -q holaMundoAgain (ejecuta todo task holaMundo)
+//Ejecutar comando: gradle -b build02.gradle -q M

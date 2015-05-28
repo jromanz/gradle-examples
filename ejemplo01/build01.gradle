@@ -1,0 +1,41 @@
+task compilar {
+	println "Estoy compilando"
+}
+task pruebasUnitarias {
+	println "Estoy lanzando pruebas unitarias."
+}
+task empaquetar {
+	println "Estoy creando un zip."
+}
+
+task holaMundo {
+	ext.proyecto = "Mi proyecto!"
+	ext {
+		nombre = "Julio"
+		correo = "kalerguiz@gmail.com"
+		version = "1.0"
+	}
+	doLast{
+		println "Compilando proyecto ::: " + ext.proyecto + " " + ext.version
+	}
+
+}
+//probar doLast con: gradle -b build01.gradle -q holaMundo
+
+//probar con: gradle -b build01.gradle -q tasks
+//probar con: gradle -b build01.gradle -q empaquetar
+
+task compilation {
+	println "Compilando proyecto " + holaMundo.nombre + " " + holaMundo.version
+	println "Si hay problemas avisar a " + holaMundo.correo + " : " + holaMundo.proyecto
+}
+compilation.doLast{
+	String nombre = "Federico"
+	Date now = new Date()
+	println "Ejecutando la compilacion de " + holaMundo.proyecto
+	println "Usuario " + nombre + ", a las " + now.toString()
+
+}
+//probar con: gradle -b build01.gradle -q compilation
+
+

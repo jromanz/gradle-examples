@@ -1,0 +1,23 @@
+
+task ejecutar (type: Exec) {
+	commandLine 'cmd', '/c', 'dir',".."
+	standardOutput = new FileOutputStream("output/salida.txt")
+}
+
+
+//	tarea base exec
+//	hace un ingreso a cmd con el comando dir del directorio superior al proyecto
+//	comando: gradle -b build02.gradle -q ejecutar
+
+//	agregando "standardOutput" podemos enviar la salida de la ejecucion del comando
+//	hacia un archivo de texto especifico
+
+
+task comprimir (type: Zip){
+	from "tools"
+	//archiveName "comprimir-1.0.zip"
+	baseName = "MiProyecto"
+	version = "1.0.1-BETA"
+}
+
+// tarea base zip

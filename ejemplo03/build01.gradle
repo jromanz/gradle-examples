@@ -1,0 +1,18 @@
+/*
+*	build01.gradle para el tutorial de Gradle
+*/
+
+task a << {
+	println "Estoy ejecutando la tarea A"
+}
+task b {
+	dependsOn "a"
+	doLast {
+		println "Estoy ejecutando la tarea B"
+	}
+}
+task c (dependsOn: 'b') << {
+	println "Estoy ejecutando la tarea C"
+}
+
+//Dependencia entre tareas ejecutar: gradle -b build01.gradle -q c
